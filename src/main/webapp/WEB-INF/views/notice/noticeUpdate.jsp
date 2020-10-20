@@ -42,7 +42,7 @@
 
 <div class="container">
   <h2>Notice Update From</h2>
-  <form action="./noticeUpdate" method="post">
+  <form id="frm" action="./noticeUpdate" method="post">
   
   	<input type="hidden" name="num" value="${dto.num}">
   
@@ -61,12 +61,13 @@
       <textarea class="form-control" rows="5" id="contents" name ="contents">${dto.contents}</textarea>
     </div>
     
-    
+    <input type="button" class="btn btn-primary" value="Update" id="btn">
     <button type="submit" class="btn btn-default">Update</button>
     
   </form>
 </div>
 
+<script type="text/javascript" src="../resources/js/boardWrite.js"></script>
 
 </body>
 </html>

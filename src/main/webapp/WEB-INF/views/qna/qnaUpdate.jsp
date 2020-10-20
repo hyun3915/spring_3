@@ -41,29 +41,24 @@
 </nav>
 
 <div class="container">
-  <h2>Member Update From</h2>
-  <form id="frm" action="./memberUpdate" method="post">
+  <h2>QnA Update From</h2>
+  <form id="frm" action="./qnaUpdate" method="post">
   
   	<input type="hidden" name="num" value="${dto.num}">
   
     <div class="form-group">
-      <label for="id">Id:</label>
-      <input type="text" class="form-control" id="id" readonly="readonly" name="id" value="${dto.id}">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="${dto.title}">
     </div>
     
     <div class="form-group">
-      <label for="pw">Pw:</label>
-      <input type="text" class="form-control" id="pw" placeholder="Enter pw" name="pw" value="${dto.pw}">
+      <label for="writer">Writer:</label>
+      <input type="text" class="form-control" id="writer" readonly="readonly" placeholder="Enter writer" name="writer" value="${dto.writer}">
     </div>
    
    <div class="form-group">
-      <label for="name">Name:</label>
-      <textarea class="form-control" rows="5" id="name" placeholder="Enter name" name ="name">${dto.name}</textarea>
-    </div>
-    
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <textarea class="form-control" rows="5" id="email" placeholder="Enter email" name ="email">${dto.email}</textarea>
+      <label for="contents">Contents:</label>
+      <textarea class="form-control" rows="5" id="contents" name ="contents">${dto.contents}</textarea>
     </div>
     
     <input type="button" class="btn btn-primary" value="Update" id="btn">
@@ -72,7 +67,8 @@
   </form>
 </div>
 
-<script type="text/javascript" src="../resources/js/m_boardWrite.js"></script>
+<script type="text/javascript" src="../resources/js/boardWrite.js"></script>
+
 
 </body>
 </html>

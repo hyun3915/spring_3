@@ -31,7 +31,8 @@
           <li><a href="#">Page 1-3</a></li>
         </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="./notice/noticeList">Notice</a></li>
+      <li><a href="./member/memberList">Member</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -39,40 +40,33 @@
     </ul>
   </div>
 </nav>
-
+  
 <div class="container">
-  <h2>Member Update From</h2>
-  <form id="frm" action="./memberUpdate" method="post">
-  
-  	<input type="hidden" name="num" value="${dto.num}">
-  
-    <div class="form-group">
-      <label for="id">Id:</label>
-      <input type="text" class="form-control" id="id" readonly="readonly" name="id" value="${dto.id}">
-    </div>
-    
-    <div class="form-group">
-      <label for="pw">Pw:</label>
-      <input type="text" class="form-control" id="pw" placeholder="Enter pw" name="pw" value="${dto.pw}">
-    </div>
-   
-   <div class="form-group">
-      <label for="name">Name:</label>
-      <textarea class="form-control" rows="5" id="name" placeholder="Enter name" name ="name">${dto.name}</textarea>
-    </div>
-    
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <textarea class="form-control" rows="5" id="email" placeholder="Enter email" name ="email">${dto.email}</textarea>
-    </div>
-    
-    <input type="button" class="btn btn-primary" value="Update" id="btn">
-    <button type="submit" class="btn btn-default">Update</button>
-    
-  </form>
+  <h3>QnA Select Page</h3>
+  <h3 id="num">${dto.num}</h3>
+  <h3>Title : ${dto.title}</h3>
+  <h3>Writer : ${dto.writer}</h3>
+  <h3>Contents : ${dto.contents}</h3>
+  <input type="button" title="${dto.num}" value="Delete" class="btn btn-warning" id="del">
+  <input type="button" value="Update" class="btn btn-info" id="update">
 </div>
 
-<script type="text/javascript" src="../resources/js/m_boardWrite.js"></script>
+<script type="text/javascript">
+	//$("css선택자").action();
+	$("#update").click(function() {
+		location.href="./qnaUpdate?num=${dto.num}";
+	});
+	
+	$("#del").click(function() {
+		//var num =$("#num").html();
+		var num = $(this).attr("title");
+		alert(num);
+		location.href="./qnaDelete?num="+num;
+	});
+	
+	
+	
+</script>
 
 </body>
 </html>

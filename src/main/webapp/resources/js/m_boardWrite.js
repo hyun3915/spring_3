@@ -2,24 +2,30 @@
  * 
  */
 	$("#btn").click(function () {
-		var t = $("#title").val();
-		var w = $("#writer").val();
-		var c = $("#contents").val();
+		var i = $("#id").val();
+		var p = $("#pw").val();
+		var n = $("#name").val();
+		var e = $("#email").val();
 		
 		var ch1 = false;
 		var ch2 = false;
 		var ch3 = false;		
+		var ch4 = false;		
 		
-		if(t!=''){
+		if(i!=''){
 			ch1 = true;
 		}
-		if(w!=''){
+		if(p!=''){
 			ch2 = true;
 		}
-		if(c!=''){
+		if(n!=''){
 			ch3 = true;
 		}
-		if(ch1 &&ch2 &&ch3) {
+		if(e!=''){
+			ch4 = true;
+		}
+		
+		if(ch1 &&ch2 &&ch3 &&ch4) {
 			$("#frm").submit();
 		}else{
 			alert("필수 항목을 입력하세요");

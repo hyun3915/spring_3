@@ -66,9 +66,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
-	public void memberUpdate(MemberDTO memberDTO) throws Exception{
+	public ModelAndView memberUpdate(MemberDTO memberDTO) throws Exception{
 		int result = memberService.memberUpdate(memberDTO);
 		System.out.println("Result : "+result);
+		ModelAndView mv = new ModelAndView();
+		if(result>0) {
+			mv.addObject("msg","Update Success");
+		}else {
+			mv.addObject("msg","Update Fail");
+		}
+		
+		mv.addObject("path","./memberList");
+		mv.setViewName("common/result");
+		return mv;
+		
 	}
 	
 	@RequestMapping(value = "memberDelete")

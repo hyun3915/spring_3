@@ -41,38 +41,32 @@
 </nav>
 
 <div class="container">
-  <h2>Member Update From</h2>
-  <form id="frm" action="./memberUpdate" method="post">
-  
-  	<input type="hidden" name="num" value="${dto.num}">
-  
+  <h2>QnA Write From</h2>
+  <form id="frm" action="./qnaWrite" method="post">
     <div class="form-group">
-      <label for="id">Id:</label>
-      <input type="text" class="form-control" id="id" readonly="readonly" name="id" value="${dto.id}">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
     </div>
     
     <div class="form-group">
-      <label for="pw">Pw:</label>
-      <input type="text" class="form-control" id="pw" placeholder="Enter pw" name="pw" value="${dto.pw}">
+      <label for="writer">Writer:</label>
+      <input type="text" class="form-control" id="writer" placeholder="Enter writer" name="writer">
     </div>
    
    <div class="form-group">
-      <label for="name">Name:</label>
-      <textarea class="form-control" rows="5" id="name" placeholder="Enter name" name ="name">${dto.name}</textarea>
+      <label for="contents">Contents:</label>
+      <textarea class="form-control" rows="5" id="contents" name ="contents"></textarea>
     </div>
     
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <textarea class="form-control" rows="5" id="email" placeholder="Enter email" name ="email">${dto.email}</textarea>
-    </div>
-    
-    <input type="button" class="btn btn-primary" value="Update" id="btn">
-    <button type="submit" class="btn btn-default">Update</button>
+    <input type="button" class="btn btn-primary" value="Write" id="btn">
+    <button type="submit" class="btn btn-default">Write</button>
     
   </form>
 </div>
 
-<script type="text/javascript" src="../resources/js/m_boardWrite.js"></script>
+<script type="text/javascript" src="../resources/js/boardWrite.js">
+
+</script>
 
 </body>
 </html>

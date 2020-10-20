@@ -42,7 +42,7 @@
 
 <div class="container">
   <h2>Member Join From</h2>
-  <form action="./memberJoin" method="post">
+  <form id="frm" action="./memberJoin" method="post">
     <div class="form-group">
       <label for="id">Id:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
@@ -63,11 +63,14 @@
       <textarea class="form-control" rows="5" id="email" placeholder="Enter email" name ="email"></textarea>
     </div>
     
+    <input type="button" class="btn btn-primary" value="Write" id="btn">
     <button type="submit" class="btn btn-default">Write</button>
     
   </form>
 </div>
+<script type="text/javascript" src="../resources/js/m_boardWrite.js">
 
+</script>
 
 </body>
 </html>
