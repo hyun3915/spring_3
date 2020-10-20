@@ -7,6 +7,11 @@
 <head>
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	.c1{
+      cursor: pointer;
+   }
+</style>
 </head>
 <body>
 
@@ -16,7 +21,8 @@
   <h3>Notice List</h3>
        <div class="row">
         <div class="col-sm-8">
-           <form action="./noticeList">
+           <form action="./noticeList" id="searchForm">
+           <input type="hidden" name="curPage" id="curPage"> 
             <div class="input-group">
             	<select class="input-group-sm" id="sel1" name="kind">
             		<option value="tt">Title</option>
@@ -57,15 +63,15 @@
   <div>
   
   	<c:if test="${pager.beforeCheck}">
-    <a href="./noticeList?curPage=${pager.startNum-1}">[이전]</a>
+    	<span class="c1" title="${pager.startNum-1}">[이전]</span> 
     </c:if>
     
 	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		<a href="./noticeList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+		<span class="c1" title="${i}">${i}</span>
 	</c:forEach>
 	
 	<c:if test="${pager.nextCheck}">
-	<a href="./noticeList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">[다음]</a>
+		<span class="c1" title="${pager.lastNum+1}">[다음]</span> 
 	</c:if>
   </div>
   
@@ -73,6 +79,14 @@
 
   
 </div>
+<script type="text/javascript">
+	$(".c1").click(function() {
+		var c = $(this).attr("title");
+		
+		$("#curPage").val(c);
 
+		$("#searchForm").submit();
+	});
+</script>
 </body>
 </html>
