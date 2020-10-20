@@ -15,6 +15,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	.c1{
+      cursor: pointer;
+   }
+</style>
 </head>
 <body>
 
@@ -25,9 +30,10 @@
   
          <div class="row">
         <div class="col-sm-8">
-           <form action="./memberList">
+           <form action="./memberList" id="searchForm">
+            <input type="hidden" name="curPage" id="curPage"> 
             <div class="input-group">
-            	<select class="input-group-sm" id="sel1" name="kind">
+            	<select class="input-group-sm" id="kind" name="kind">
             		<option value="tt">Id</option>
             		<option value="wr">Pw</option>
             		<option value="na">Name</option>
@@ -68,21 +74,40 @@
   <div>
   
   	<c:if test="${pager.beforeCheck}">
-  	<a href="./memberList?curPage=${pager.startNum-1}">[이전]</a>
+  	<span class="c1" title="${pager.startNum-1}">[이전]</span> 
   	</c:if>
   	
   	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-  		<a href="./memberList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+  		<span class="c1" title="${i}">${i}</span>
   	</c:forEach>
   	
   	<c:if test="${pager.nextCheck}">
-  	<a href="./memberList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">[다음]</a>
+  		<span class="c1" title="${pager.lastNum+1}">[다음]</span>
   	</c:if>
   </div>
   
   <a href="./memberJoin" class="btn btn-danger">Write</a>
   
 </div>
+
+<script type="text/javascript">
+	var kind = '${pager.kind}';
+	var search = '${pager.search}';
+	if(kind == ''){
+		kind="tt";
+	}
+	$('#kind').val(kind);
+	$('search').val(search);
+	
+	$(".c1").click(function() {
+		var c = $(this).attr("title");
+		
+		$("#curPage").val(c);
+		$('#kind').val(kind);
+		$('#search').val(search);
+		$("#searchForm").submit();
+	});
+</script>
 
 </body>
 </html>
