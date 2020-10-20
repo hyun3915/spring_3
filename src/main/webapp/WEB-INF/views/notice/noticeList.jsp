@@ -24,12 +24,12 @@
            <form action="./noticeList" id="searchForm">
            <input type="hidden" name="curPage" id="curPage"> 
             <div class="input-group">
-            	<select class="input-group-sm" id="sel1" name="kind">
+            	<select class="input-group-sm" id="kind" name="kind">
             		<option value="tt">Title</option>
             		<option value="wr">Writer</option>
             		<option value="con">Contents</option>
             	</select>
-                   <input id="msg" type="text" class="form-control" name="search" placeholder="Additional Info">
+                   <input id="search" type="text" class="form-control" name="search" placeholder="Additional Info">
                 <div class="input-group-btn">
                   <button class="btn btn-default" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
@@ -80,11 +80,20 @@
   
 </div>
 <script type="text/javascript">
+		var kind = '${pager.kind}';
+		var search = '${pager.search}';
+		if(kind ==''){
+			kind='tt';
+		}
+		$('#kind').val(kind);
+		$('#search').val(search);
+		
 	$(".c1").click(function() {
 		var c = $(this).attr("title");
 		
 		$("#curPage").val(c);
-
+		$('#kind').val(kind);
+		$('#search').val(search);
 		$("#searchForm").submit();
 	});
 </script>
