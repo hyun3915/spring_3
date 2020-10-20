@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sub.s3.member.MemberDAO">
+
+<select id="memberList" resultType="com.sub.s3.member.MemberDTO" parameterType="com.sub.s3.util.Pager">
+	select * From(select rownum R, N.* from(SELECT * FROM member_sub where
+	<choose>
+			<when test="kind == 'tt'">
+				id
+			</when>
+			
+			<when test="kind == 'wr'">
+				pw
+			</when>
+			
+			<when test="kind == 'na'">
+				name
+			</when>
+			
+			<otherwise>
+				email
+			</otherwise>
+		</choose>
+	like '%'||#{search}||'%' order by num desc) N) where R between #{startRow} and #{lastRow}
+</select>
+
+<select id="memberSelect" parameterType="java.lang.Long" resultType="com.sub.s3.member.MemberDTO">
+	select * from member_sub where num=#{num}
+</select>
+
+<insert id="memberJoin" parameterType="com.sub.s3.member.MemberDTO">
+	insert into member_sub values(member_seq.nextval, #{id}, #{pw}, #{name}, #{email})
+</insert>
+
+<update id="memberUpdate" parameterType="com.sub.s3.member.MemberDTO">
+	update member_sub set pw=#{pw}, name=#{name}, email=#{email} where num=#{num}
+</update>
+
+<delete id="memberDelete" parameterType="java.lang.Long">
+	delete member_sub where num=#{num}
+</delete>
+
+<select id="memberCount" resultType="java.lang.Long" parameterType="com.sub.s3.util.Pager">
+		select count(num) from member_sub
+		where
+		<choose>
+			<when test="kind == 'tt'">
+				id
+			</when>
+			
+			<when test="kind == 'wr'">
+				pw
+			</when>
+			
+			<when test="kind == 'na'">
+				name
+			</when>
+			
+			<otherwise>
+				email
+			</otherwise>
+		</choose>
+		like '%' || #{search} || '%'
+</select>
+
+</mapper>
