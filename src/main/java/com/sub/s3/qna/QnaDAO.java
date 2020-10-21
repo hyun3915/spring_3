@@ -39,4 +39,9 @@ public class QnaDAO {
 		return sqlSession.delete(namespace+"qnaDelete", num);
 	}
 	
+	//reply
+	public int qnaReply(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(namespace+"qnaReply", qnaDTO);
+	}
+	
 }
