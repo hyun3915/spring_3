@@ -31,8 +31,7 @@
           <li><a href="#">Page 1-3</a></li>
         </ul>
       </li>
-      <li><a href="./notice/noticeList">Notice</a></li>
-      <li><a href="./member/memberList">Member</a></li>
+      <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -40,33 +39,34 @@
     </ul>
   </div>
 </nav>
-  
+
 <div class="container">
-  <h3>QnA Select Page</h3>
-  <h3 id="num">${dto.num}</h3>
-  <h3>Title : ${dto.title}</h3>
-  <h3>Writer : ${dto.writer}</h3>
-  <h3>Contents : ${dto.contents}</h3>
-  <input type="button" title="${dto.num}" value="Delete" class="btn btn-warning" id="del">
-  <input type="button" value="Update" class="btn btn-info" id="update">
-  <a href="./qnaReply?num=${dto.num}" class="btn btn-info">Reply</a>
+  <h2>QnA Reply From</h2>
+  <form id="frm" action="./qnaReply" method="post">
+  	<input type="hidden" name="num" value="${param.num}">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+    </div>
+    
+    <div class="form-group">
+      <label for="writer">Writer:</label>
+      <input type="text" class="form-control" id="writer" placeholder="Enter writer" name="writer">
+    </div>
+   
+   <div class="form-group">
+      <label for="contents">Contents:</label>
+      <textarea class="form-control" rows="5" id="contents" name ="contents"></textarea>
+    </div>
+    
+    <input type="button" class="btn btn-primary" value="Write" id="btn">
+    <button type="submit" class="btn btn-default">Reply</button>
+    
+  </form>
 </div>
 
-<script type="text/javascript">
-	//$("css선택자").action();
-	$("#update").click(function() {
-		location.href="./qnaUpdate?num=${dto.num}";
-	});
-	
-	$("#del").click(function() {
-		//var num =$("#num").html();
-		var num = $(this).attr("title");
-		alert(num);
-		location.href="./qnaDelete?num="+num;
-	});
-	
-	
-	
+<script type="text/javascript" src="../resources/js/boardWrite.js">
+
 </script>
 
 </body>
